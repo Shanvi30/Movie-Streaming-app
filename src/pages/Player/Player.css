@@ -73,7 +73,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ══ RESPONSIVE ══ */
@@ -102,5 +104,7 @@
     border-radius: 0;
     height: 56vw;
   }
-  .player-error h2 { font-size: 18px; }
+  .player-error h2 {
+    font-size: 18px;
+  }
 }

@@ -6,7 +6,11 @@
 
 .np-hero {
   padding: 130px 6% 36px;
-  background: linear-gradient(180deg, rgba(229,9,20,0.18) 0%, transparent 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(229, 9, 20, 0.18) 0%,
+    transparent 100%
+  );
 }
 
 .np-hero h1 {
@@ -45,7 +49,11 @@
   transition: all 0.2s;
 }
 
-.np-tab.active { background: #e50914; border-color: #e50914; color: white; }
+.np-tab.active {
+  background: #e50914;
+  border-color: #e50914;
+  color: white;
+}
 
 /* Grid */
 .np-grid {
@@ -61,12 +69,14 @@
   position: relative;
 }
 
-.np-card:hover { transform: scale(1.04); }
+.np-card:hover {
+  transform: scale(1.04);
+}
 
 .np-rank {
   font-size: 54px;
   font-weight: 900;
-  color: rgba(255,255,255,0.1);
+  color: rgba(255, 255, 255, 0.1);
   position: absolute;
   top: -12px;
   left: -6px;
@@ -93,7 +103,7 @@
 .np-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +112,9 @@
   transition: opacity 0.2s;
 }
 
-.np-card:hover .np-overlay { opacity: 1; }
+.np-card:hover .np-overlay {
+  opacity: 1;
+}
 
 .np-title {
   font-size: 12px;
@@ -124,8 +136,12 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .load-more-btn {
@@ -142,32 +158,68 @@
   transition: background 0.2s;
 }
 
-.load-more-btn:hover { background: #b20710; }
-.load-more-btn:disabled { background: #555; cursor: not-allowed; }
+.load-more-btn:hover {
+  background: #b20710;
+}
+.load-more-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
 
 /* ══ RESPONSIVE ══ */
 
 @media (max-width: 1024px) {
-  .np-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .np-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
-  .np-hero { padding: 100px 5% 24px; }
-  .np-hero h1 { font-size: 28px; }
-  .np-content { padding: 0 4% 40px; }
-  .np-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 14px; }
-  .np-rank { font-size: 42px; }
+  .np-hero {
+    padding: 100px 5% 24px;
+  }
+  .np-hero h1 {
+    font-size: 28px;
+  }
+  .np-content {
+    padding: 0 4% 40px;
+  }
+  .np-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 14px;
+  }
+  .np-rank {
+    font-size: 42px;
+  }
 }
 
 @media (max-width: 500px) {
-  .np-hero { padding: 86px 4% 20px; }
-  .np-hero h1 { font-size: 22px; }
-  .np-content { padding: 0 3% 40px; }
-  .np-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .np-rank { font-size: 32px; top: -8px; }
+  .np-hero {
+    padding: 86px 4% 20px;
+  }
+  .np-hero h1 {
+    font-size: 22px;
+  }
+  .np-content {
+    padding: 0 3% 40px;
+  }
+  .np-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .np-rank {
+    font-size: 32px;
+    top: -8px;
+  }
 }
 
 @media (max-width: 380px) {
-  .np-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .np-tab { padding: 8px 18px; font-size: 13px; }
+  .np-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .np-tab {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
 }

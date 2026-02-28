@@ -1,16 +1,15 @@
 .faq-section {
   background-color: #000;
   color: #fff;
-  padding: 50px 0;     
+  padding: 50px 0;
   width: 100%;
-  max-width: none !important; 
+  max-width: none !important;
   margin: 0;
 }
 
-/* Wide inner width like Netflix (big, centered rows) */
 .faq-section h2,
 .faq-list {
-  width: min(1600px, calc(100% - 240px)); /* ~120px margin on both sides */
+  width: min(1600px, calc(100% - 240px));
   margin: 0 auto 20px;
 }
 
@@ -23,7 +22,7 @@
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* black separators like in the screenshot */
+  gap: 8px;
 }
 
 .faq-item {
@@ -39,7 +38,7 @@
 }
 
 .faq-icon {
-  margin-left: auto;   /* pushes the + to the far right end */
+  margin-left: auto;
   font-size: 30px;
   line-height: 1;
   flex-shrink: 0;
@@ -52,7 +51,6 @@
   border-top: 1px solid #000;
 }
 
-/* Optional: on smaller screens, keep nice side space but full width feel */
 @media (max-width: 700px) {
   .faq-section h2,
   .faq-list {

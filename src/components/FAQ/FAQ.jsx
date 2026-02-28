@@ -7,7 +7,10 @@ const faqs = [
   { question: "Where can I watch?", answer: "You can watch anywhere..." },
   { question: "How do I cancel?", answer: "You can cancel anytime..." },
   { question: "What can I watch on Netflix?", answer: "You can watch..." },
-  { question: "Is Netflix good for kids?", answer: "Netflix offers a kids profile..." }
+  {
+    question: "Is Netflix good for kids?",
+    answer: "Netflix offers a kids profile...",
+  },
 ];
 
 const FAQ = () => {
@@ -25,7 +28,9 @@ const FAQ = () => {
           <div key={index} className="faq-item">
             <div className="faq-question" onClick={() => toggleFAQ(index)}>
               <span>{faq.question}</span>
-              <span className="faq-icon">{activeIndex === index ? "×" : "+"}</span>
+              <span className="faq-icon">
+                {activeIndex === index ? "×" : "+"}
+              </span>
             </div>
             {activeIndex === index && (
               <div className="faq-answer">

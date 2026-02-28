@@ -1,18 +1,6 @@
 # 🎬 Netflix Clone
 
-A full-featured Netflix Clone built with **React.js** and **Firebase**, featuring real movie data from TMDB API, Google Authentication, Watchlist, Notifications, and much more!
-
----
-
-## 🚀 Live Demo
-
-> Deploy link yahan add karo after Vercel deployment
-
----
-
-## 📸 Screenshots
-
-> Screenshots yahan add karo
+A full-featured Netflix Clone built with **React.js** and **Firebase**, featuring movie trail data from TMDB API, Google Authentication, Watchlist, Notifications, and much more!
 
 ---
 
@@ -195,8 +183,6 @@ npm install
 
 ### 3. Environment Variables
 
-Root folder mein `.env` file banao:
-
 ```env
 VITE_TMDB_TOKEN=your_tmdb_token_here
 VITE_FIREBASE_API_KEY=your_firebase_api_key
@@ -221,33 +207,6 @@ http://localhost:5173
 
 ---
 
-## 🔥 Firebase Setup
-
-1. **Firebase Console** mein jao → https://console.firebase.google.com
-2. New project banao
-3. **Authentication** enable karo:
-   - Email/Password ✅
-   - Google ✅
-4. **Firestore Database** banao
-5. **Firestore Rules** set karo:
-
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /user/{id} {
-      allow read, write: if request.auth != null;
-    }
-    match /watchlist/{id} {
-      allow read, write: if request.auth != null;
-    }
-    match /notifications/{id} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
-```
-
 ---
 
 ## 🌐 Deployment (Vercel)
@@ -264,41 +223,6 @@ service cloud.firestore {
   ]
 }
 ```
-
-### Deploy Steps
-
-1. GitHub pe code push karo
-2. **https://vercel.com** pe jao
-3. **"Import Project"** karo from GitHub
-4. **Environment Variables** add karo (.env wali values)
-5. **Deploy** click karo ✅
-
----
-
-## 📱 Responsive Design
-
-| Screen Size            | Layout                          |
-| ---------------------- | ------------------------------- |
-| Mobile (< 500px)       | 3 cards per row, hamburger menu |
-| Tablet (500px - 800px) | 3 cards per row, compact navbar |
-| Desktop (> 800px)      | Full navbar, larger cards       |
-
----
-
-## 🎯 Pages Overview
-
-| Page          | Route          | Description                   |
-| ------------- | -------------- | ----------------------------- |
-| Home          | `/`            | Hero banner + Movie carousels |
-| Login         | `/login`       | Sign in / Sign up             |
-| Movies        | `/movies`      | Browse all movies             |
-| TV Shows      | `/tvshows`     | Browse TV shows               |
-| New & Popular | `/new-popular` | Trending content              |
-| Movie Detail  | `/movie/:id`   | Full movie info               |
-| TV Detail     | `/tv/:id`      | Full TV show info             |
-| Watchlist     | `/watchlist`   | Saved movies                  |
-| Player        | `/player/:id`  | Video player                  |
-| Settings      | `/settings`    | User settings                 |
 
 ---
 

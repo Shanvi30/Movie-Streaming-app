@@ -63,7 +63,9 @@
   transition: background 0.2s;
 }
 
-.notfound-home-btn:hover { background: #b20710; }
+.notfound-home-btn:hover {
+  background: #b20710;
+}
 
 .notfound-back-btn {
   background: transparent;
@@ -76,20 +78,38 @@
   transition: all 0.2s;
 }
 
-.notfound-back-btn:hover { color: white; border-color: white; }
+.notfound-back-btn:hover {
+  color: white;
+  border-color: white;
+}
 
 /* ══ RESPONSIVE ══ */
 
 @media (max-width: 500px) {
-  .notfound-code { font-size: 90px; }
-  .notfound-title { font-size: 22px; }
-  .notfound-text { font-size: 14px; }
-  .notfound-btns { flex-direction: column; align-items: center; }
+  .notfound-code {
+    font-size: 90px;
+  }
+  .notfound-title {
+    font-size: 22px;
+  }
+  .notfound-text {
+    font-size: 14px;
+  }
+  .notfound-btns {
+    flex-direction: column;
+    align-items: center;
+  }
   .notfound-home-btn,
-  .notfound-back-btn { width: 200px; }
+  .notfound-back-btn {
+    width: 200px;
+  }
 }
 
 @media (max-width: 360px) {
-  .notfound-code { font-size: 70px; }
-  .notfound-title { font-size: 18px; }
+  .notfound-code {
+    font-size: 70px;
+  }
+  .notfound-title {
+    font-size: 18px;
+  }
 }
