@@ -121,7 +121,7 @@
   width: 100%;
   height: 80vh;
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
   position: absolute;
   top: 0;
@@ -311,7 +311,7 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
   transition: opacity 0.4s ease;
 }
@@ -590,5 +590,105 @@
   }
   .hero-arrow {
     display: none;
+  }
+}
+
+/* ══ MOBILE FULL IMAGE FIX ══ */
+@media (max-width: 600px) {
+  .hero {
+    height: auto !important;
+    min-height: unset !important;
+    aspect-ratio: 16 / 9;
+  }
+  .banner-bg {
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  .hero-bottom-fade {
+    height: 120px;
+  }
+  .hero-caption {
+    bottom: 6%;
+    left: 4%;
+    max-width: 80%;
+  }
+  .hero-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .hero-overview {
+    display: none;
+  }
+  .hero-meta {
+    margin-bottom: 6px;
+  }
+  .hero-btns .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 5px;
+  }
+  .hero-btns .btn img {
+    width: 14px;
+  }
+  .hero-dots {
+    bottom: 4%;
+    right: 4%;
+    display: flex;
+  }
+  .hero-arrow {
+    width: 26px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .hero {
+    aspect-ratio: 16 / 9;
+    height: auto !important;
+    min-height: unset !important;
+  }
+  .banner-bg {
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  .hero-title {
+    font-size: 14px;
+  }
+  .hero-meta {
+    display: none;
+  }
+  .hero-dots {
+    display: none;
+  }
+  .hero-arrow {
+    width: 22px;
+    height: 38px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    aspect-ratio: 16 / 9;
+    height: auto !important;
+    min-height: unset !important;
+  }
+  .banner-bg {
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  .hero-arrow {
+    display: none;
+  }
+  .hero-title {
+    font-size: 13px;
+  }
+  .hero-btns .btn {
+    padding: 5px 10px;
+    font-size: 11px;
   }
 }
