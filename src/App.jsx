@@ -10,10 +10,10 @@ import TVShows from "./pages/TVShows/TVShows";
 import NewPopular from "./pages/NewPopular/NewPopular";
 import Settings from "./pages/Settings/Settings";
 import NotFound from "./pages/NotFound/NotFound";
-import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { onAuthStateChanged, getRedirectResult } from "firebase/auth";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -28,15 +28,26 @@ const App = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        if (window.location.pathname === "/login") navigate("/");
-      } else {
-        if (window.location.pathname !== "/login") navigate("/login");
+  getRedirectResult(auth)
+    .then((result) => {
+      if (result?.user) {
+        toast.success("Welcome! Logged in with Google 🎉");
       }
+    })
+    .catch((error) => {
+      console.error("Redirect error:", error);
+      toast.error(error.message);
     });
-    return () => unsubscribe();
-  }, [navigate]);
+
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    if (user) {
+      if (window.location.pathname === "/login") navigate("/");
+    } else {
+      if (window.location.pathname !== "/login") navigate("/login");
+    }
+  });
+  return () => unsubscribe();
+}, [navigate]);
 
   useEffect(() => {
     const handleScroll = () => {
