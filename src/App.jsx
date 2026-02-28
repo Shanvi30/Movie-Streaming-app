@@ -28,6 +28,8 @@ const App = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
+  let unsubscribe;
+
   getRedirectResult(auth)
     .then((result) => {
       if (result?.user) {
@@ -37,16 +39,20 @@ const App = () => {
     .catch((error) => {
       console.error("Redirect error:", error);
       toast.error(error.message);
+    })
+    .finally(() => {
+      unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          if (window.location.pathname === "/login") navigate("/");
+        } else {
+          if (window.location.pathname !== "/login") navigate("/login");
+        }
+      });
     });
 
-  const unsubscribe = onAuthStateChanged(auth, (user) => {
-    if (user) {
-      if (window.location.pathname === "/login") navigate("/");
-    } else {
-      if (window.location.pathname !== "/login") navigate("/login");
-    }
-  });
-  return () => unsubscribe();
+  return () => {
+    if (unsubscribe) unsubscribe();
+  };
 }, [navigate]);
 
   useEffect(() => {
