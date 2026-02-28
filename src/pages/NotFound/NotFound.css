@@ -1,0 +1,95 @@
+.notfound-page {
+  min-height: 100vh;
+  background: #141414;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.notfound-content {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.notfound-code {
+  font-size: 130px;
+  font-weight: 900;
+  color: #e50914;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.notfound-divider {
+  width: 60px;
+  height: 3px;
+  background: #e50914;
+  margin: 0 auto 24px;
+  border-radius: 2px;
+}
+
+.notfound-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.notfound-text {
+  color: #aaa;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.notfound-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.notfound-home-btn {
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notfound-home-btn:hover { background: #b20710; }
+
+.notfound-back-btn {
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #555;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.notfound-back-btn:hover { color: white; border-color: white; }
+
+/* ══ RESPONSIVE ══ */
+
+@media (max-width: 500px) {
+  .notfound-code { font-size: 90px; }
+  .notfound-title { font-size: 22px; }
+  .notfound-text { font-size: 14px; }
+  .notfound-btns { flex-direction: column; align-items: center; }
+  .notfound-home-btn,
+  .notfound-back-btn { width: 200px; }
+}
+
+@media (max-width: 360px) {
+  .notfound-code { font-size: 70px; }
+  .notfound-title { font-size: 18px; }
+}

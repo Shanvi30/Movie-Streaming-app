@@ -1,35 +1,71 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './TitleCards.css'
-import cards_data from '../../assets/cards/Cards_data'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+const TitleCards = ({ title, category }) => {
+  const [apiData, setApiData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const cardsRef = useRef()
 
-const TitleCards = ({title, category}) => {
-
-  const [apiData, setApiData] = useState([]);
-  const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmOTI5Y2VkNzNhOWJmOWM0NWUyZjc5NjllMDI1ZDI5YyIsIm5iZiI6MTc1NDk4NjU2OS4wMTksInN1YiI6IjY4OWFmODQ5ZGM2MDYwMGU2YThkYWYwMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IMwBkvOQe8xw-eOLgfymaTaIS23MMErlITZoGLriK7o'
+  const handleWheel = (event) => {
+    event.preventDefault()
+    cardsRef.current.scrollLeft += event.deltaY
   }
-};
 
-fetch(`https://api.themoviedb.org/3/movie/${category?category:"now_playing"}?language=en-US&page=1`, options)
-  .then(res => res.json())
-  .then(res => setApiData(res.results))
-  .catch(err => console.error(err));
+  useEffect(() => {
+    const url =
+      category === 'hindi'
+        ? `https://api.themoviedb.org/3/discover/movie?with_original_language=hi&sort_by=popularity.desc&page=1`
+        : `https://api.themoviedb.org/3/movie/${category ? category : 'now_playing'}?language=en-US&page=1`
+
+    setLoading(true)
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setApiData(res.results || [])
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.error(err)
+        setLoading(false)
+      })
+
+    const cardElement = cardsRef.current
+    cardElement.addEventListener('wheel', handleWheel)
+    return () => {
+      cardElement.removeEventListener('wheel', handleWheel)
+    }
+  }, [category])
 
   return (
     <div className='title-cards'>
-      <h2>{title?title:"Popular on Netflix"}</h2>
-      <div className="card-list">
-        {apiData.map((card, index) => {
-          return <Link to={`/player/${card.id}`}className="card" key={index}>
-            <img src={`https://image.tmdb.org/t/p/w500`+card.backdrop_path} />
-            <p>{card.original_title}</p>
-          </Link>
-        })}
+      <h2>{title ? title : 'Popular on Netflix'}</h2>
+      <div className='card-list' ref={cardsRef}>
+        {loading ? (
+          <div className='cards-loading'>
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className='card-skeleton'></div>
+            ))}
+          </div>
+        ) : (
+          apiData
+            .filter((card) => card.backdrop_path)
+            .map((card) => (
+              <Link to={`/movie/${card.id}`} className='card' key={card.id}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path}
+                  alt={card.original_title}
+                />
+                <p>{card.original_title}</p>
+              </Link>
+            ))
+        )}
       </div>
     </div>
   )
