@@ -10,6 +10,7 @@ body {
   background: black;
   color: white;
   font-family: "poppins";
+  overflow-x: hidden;
 }
 
 /* Scroll to top button */

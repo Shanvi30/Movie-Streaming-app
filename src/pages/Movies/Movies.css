@@ -5,8 +5,7 @@
 }
 
 .movies-content {
-  max-width: 1300px;
-  margin: 0 auto;
+  width: 100%;
   padding: 110px 5% 60px;
 }
 
@@ -225,4 +224,12 @@
     padding: 10px 32px;
     font-size: 14px;
   }
+}
+
+@media (max-width: 425px) {
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .movies-content { padding: 80px 3% 40px; }
 }

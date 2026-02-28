@@ -25,9 +25,8 @@
 }
 
 .np-content {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 5% 60px;
+  width: 100%;
+  padding: 0 4% 60px;
 }
 
 /* Tabs */
@@ -84,6 +83,8 @@
   z-index: 1;
   pointer-events: none;
   text-shadow: -2px 0 0 #333;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .np-poster {
@@ -221,5 +222,12 @@
   .np-tab {
     padding: 8px 18px;
     font-size: 13px;
+  }
+}
+
+@media (max-width: 425px) {
+  .np-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
 }
