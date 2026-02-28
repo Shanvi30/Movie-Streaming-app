@@ -364,7 +364,7 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Profile */}
+        {/* Profile — flex-shrink:0 so it never gets cut by search bar */}
         <div className="navbar-profile">
           <img src={avatarSrc} className="profile" alt="profile" />
           <img src={caret_icon} alt="caret" />
@@ -399,11 +399,20 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — Netflix logo at top */}
       {menuOpen && (
         <>
           <div className="menu-overlay" onClick={() => setMenuOpen(false)} />
           <ul className="mobile-menu">
+            {/* Logo at top of mobile menu */}
+            <li className="mobile-menu-logo-item">
+              <img
+                src={logo}
+                alt="Netflix"
+                className="mobile-menu-logo"
+                onClick={() => { navigate("/"); setMenuOpen(false); }}
+              />
+            </li>
             <li
               onClick={() => {
                 navigate("/");

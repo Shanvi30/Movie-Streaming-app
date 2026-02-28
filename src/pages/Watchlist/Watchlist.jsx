@@ -11,6 +11,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -20,17 +21,34 @@ const Watchlist = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) return;
+    let unsubSnapshot = null;
 
-    const q = query(collection(db, "watchlist"), where("uid", "==", user.uid));
-    const unsub = onSnapshot(q, (snap) => {
-      const items = snap.docs.map((d) => ({ firestoreId: d.id, ...d.data() }));
-      items.sort((a, b) => b.addedAt?.toDate?.() - a.addedAt?.toDate?.());
-      setWatchlist(items);
-      setLoading(false);
+    // onAuthStateChanged wait karta hai jab tak Firebase auth
+    // properly initialize ho jaye — refresh pe bhi kaam karta hai
+    const unsubAuth = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        setLoading(false);
+        setWatchlist([]);
+        return;
+      }
+
+      const q = query(
+        collection(db, "watchlist"),
+        where("uid", "==", user.uid)
+      );
+
+      unsubSnapshot = onSnapshot(q, (snap) => {
+        const items = snap.docs.map((d) => ({ firestoreId: d.id, ...d.data() }));
+        items.sort((a, b) => b.addedAt?.toDate?.() - a.addedAt?.toDate?.());
+        setWatchlist(items);
+        setLoading(false);
+      });
     });
-    return () => unsub();
+
+    return () => {
+      unsubAuth();
+      if (unsubSnapshot) unsubSnapshot();
+    };
   }, []);
 
   const removeFromWatchlist = async (e, firestoreId) => {
