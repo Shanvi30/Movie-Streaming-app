@@ -6,7 +6,10 @@
 
 .movies-content {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 110px 5% 60px;
+  box-sizing: border-box;
 }
 
 .movies-heading {
@@ -69,14 +72,16 @@
 /* Grid */
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .movie-card {
   cursor: pointer;
   transition: transform 0.2s;
+  min-width: 0;
 }
 
 .movie-card:hover {
@@ -178,7 +183,7 @@
 
 @media (max-width: 1024px) {
   .movies-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -193,7 +198,7 @@
     width: 100%;
   }
   .movies-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
   .movies-heading {
@@ -215,21 +220,42 @@
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 425px) {
+  .movies-content {
+    padding: 80px 3% 40px;
+  }
   .movies-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
-  .load-more-btn {
-    padding: 10px 32px;
-    font-size: 14px;
+  .movies-heading {
+    font-size: 20px;
+  }
+  .genre-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  .movie-title {
+    font-size: 10px;
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 360px) {
+  .movies-content {
+    padding: 75px 2% 40px;
+  }
   .movies-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 6px;
   }
-  .movies-content { padding: 80px 3% 40px; }
+}
+
+@media (max-width: 320px) {
+  .movies-content {
+    padding: 70px 2% 30px;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
 }

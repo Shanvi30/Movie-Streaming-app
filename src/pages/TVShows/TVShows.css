@@ -6,7 +6,10 @@
 
 .tvshows-content {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 110px 5% 60px;
+  box-sizing: border-box;
 }
 
 .tvshows-heading {
@@ -48,14 +51,16 @@
 /* Grid */
 .tvshows-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .tv-card {
   cursor: pointer;
   transition: transform 0.2s;
+  min-width: 0;
 }
 
 .tv-card:hover {
@@ -155,7 +160,7 @@
 
 @media (max-width: 1024px) {
   .tvshows-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -164,7 +169,7 @@
     padding: 90px 4% 40px;
   }
   .tvshows-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
   .tvshows-heading {
@@ -184,19 +189,48 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
-}
-
-@media (max-width: 380px) {
-  .tvshows-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+  .tv-tab {
+    padding: 6px 14px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 425px) {
+  .tvshows-content {
+    padding: 80px 3% 40px;
+  }
   .tvshows-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
-  .tvshows-content { padding: 80px 3% 40px; }
+  .tvshows-heading {
+    font-size: 20px;
+  }
+  .tv-tab {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  .tv-title {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .tvshows-content {
+    padding: 75px 2% 40px;
+  }
+  .tvshows-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+}
+
+@media (max-width: 320px) {
+  .tvshows-content {
+    padding: 70px 2% 30px;
+  }
+  .tvshows-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
 }
