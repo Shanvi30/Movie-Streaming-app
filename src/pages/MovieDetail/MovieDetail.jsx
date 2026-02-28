@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./MovieDetail.css";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { db, auth } from "../../firebase";
 import {
@@ -288,6 +289,7 @@ const MovieDetail = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

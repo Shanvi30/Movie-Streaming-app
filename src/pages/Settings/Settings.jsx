@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./Settings.css";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { auth } from "../../firebase";
 import {
   updatePassword,
@@ -250,6 +251,7 @@ const Settings = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

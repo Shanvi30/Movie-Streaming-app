@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./TVShows.css";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 const TABS = [
@@ -112,6 +113,7 @@ const TVShows = () => {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

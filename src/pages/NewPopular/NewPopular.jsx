@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./NewPopular.css";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 const NewPopular = () => {
@@ -113,6 +114,7 @@ const NewPopular = () => {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
