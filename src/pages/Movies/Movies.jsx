@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Movies.css";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 const GENRES = [
@@ -158,6 +159,7 @@ const Movies = () => {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
