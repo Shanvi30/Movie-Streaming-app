@@ -26,34 +26,37 @@ const ScrollToTop = () => {
 const App = () => {
   const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
-  let unsubscribe;
+    let unsubscribe;
 
-  getRedirectResult(auth)
-    .then((result) => {
-      if (result?.user) {
-        toast.success("Welcome! Logged in with Google 🎉");
-      }
-    })
-    .catch((error) => {
-      console.error("Redirect error:", error);
-      toast.error(error.message);
-    })
-    .finally(() => {
-      unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          if (window.location.pathname === "/login") navigate("/");
-        } else {
-          if (window.location.pathname !== "/login") navigate("/login");
+    const handleAuth = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result?.user) {
+          toast.success("Welcome! Logged in with Google 🎉");
         }
-      });
-    });
+      } catch (error) {
+        console.error("Redirect error:", error);
+      } finally {
+        setAuthReady(true);
+        unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            navigate("/");
+          } else {
+            navigate("/login");
+          }
+        });
+      }
+    };
 
-  return () => {
-    if (unsubscribe) unsubscribe();
-  };
-}, [navigate]);
+    handleAuth();
+
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
+  }, [navigate]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,6 +69,8 @@ const App = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  if (!authReady) return null;
 
   return (
     <div>
