@@ -11,9 +11,9 @@ import NewPopular from "./pages/NewPopular/NewPopular";
 import Settings from "./pages/Settings/Settings";
 import NotFound from "./pages/NotFound/NotFound";
 import { auth } from "./firebase";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { onAuthStateChanged, getRedirectResult } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -29,34 +29,16 @@ const App = () => {
   const [authReady, setAuthReady] = useState(false);
 
   useEffect(() => {
-    let unsubscribe;
-
-    const handleAuth = async () => {
-      try {
-        const result = await getRedirectResult(auth);
-        if (result?.user) {
-          toast.success("Welcome! Logged in with Google 🎉");
-        }
-      } catch (error) {
-        console.error("Redirect error:", error);
-      } finally {
-        setAuthReady(true);
-        unsubscribe = onAuthStateChanged(auth, (user) => {
-          const isLoginPage = window.location.pathname === "/login";
-          if (user && isLoginPage) {
-            navigate("/");
-          } else if (!user && !isLoginPage) {
-            navigate("/login");
-          }
-        });
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setAuthReady(true);
+      const isLoginPage = window.location.pathname === "/login";
+      if (user && isLoginPage) {
+        navigate("/");
+      } else if (!user && !isLoginPage) {
+        navigate("/login");
       }
-    };
-
-    handleAuth();
-
-    return () => {
-      if (unsubscribe) unsubscribe();
-    };
+    });
+    return () => unsubscribe();
   }, [navigate]);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
-# 🎬 Netflix Clone
+# 🎬 Movie Sreaming App
 
-A full-featured Netflix Clone built with **React.js** and **Firebase**, featuring movie trail data from TMDB API, Google Authentication, Watchlist, Notifications, and much more!
+A full-featured Movie streaming web application built with **React.js** and **Firebase**, featuring movie trail data from TMDB API, Google Authentication, Watchlist, Notifications, and much more!
 
 ---
 
@@ -229,11 +229,5 @@ http://localhost:5173
 ## 👩‍💻 Developer
 
 Made with ❤️
-
----
-
-## 📄 License
-
-This project is for educational purposes only. Netflix name and logo are trademarks of Netflix, Inc.
 
 ---
