@@ -151,16 +151,19 @@ const Navbar = () => {
       const newDocs = snap.docs.filter(
         (d) => !prevWatchlistIds.current.has(d.id),
       );
-      for (const d of newDocs) {
-        const movie = d.data();
-        if (movie?.title) {
-          await addDoc(collection(db, "notifications"), {
-            uid: currentUser.uid,
-            text: `"${movie.title}" added to watchlist! 🎬`,
-            time: "Just now",
-            createdAt: new Date(),
-            read: false,
-          }).catch(console.error);
+
+      if (newDocs.length > 0) {
+        for (const d of newDocs) {
+          const movie = d.data();
+          if (movie?.title) {
+            await addDoc(collection(db, "notifications"), {
+              uid: currentUser.uid,
+              text: `"${movie.title}" added to watchlist! 🎬`,
+              time: "Just now",
+              createdAt: new Date(),
+              read: false,
+            }).catch(console.error);
+          }
         }
       }
       prevWatchlistIds.current = currentIds;
@@ -410,7 +413,10 @@ const Navbar = () => {
                 src={logo}
                 alt="Netflix"
                 className="mobile-menu-logo"
-                onClick={() => { navigate("/"); setMenuOpen(false); }}
+                onClick={() => {
+                  navigate("/");
+                  setMenuOpen(false);
+                }}
               />
             </li>
             <li
