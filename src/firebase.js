@@ -4,8 +4,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
   browserLocalPersistence,
   setPersistence,
 } from "firebase/auth";
@@ -53,25 +51,9 @@ const login = async (email, password) => {
   }
 };
 
-const googleLogin = async () => {
-  try {
-    const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: "select_account" });
-    const result = await signInWithPopup(auth, provider);
-    if (result?.user) {
-      toast.success("Welcome! Logged in with Google 🎉");
-    }
-  } catch (error) {
-    console.error(error);
-    if (error.code !== "auth/popup-closed-by-user") {
-      toast.error("Google login failed. Try again.");
-    }
-  }
-};
-
 const logout = () => {
   signOut(auth);
   toast.info("Logged out!");
 };
 
-export { auth, db, login, signup, logout, googleLogin };
+export { auth, db, login, signup, logout };
