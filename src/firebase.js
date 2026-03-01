@@ -5,8 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
   browserLocalPersistence,
   setPersistence,
 } from "firebase/auth";
@@ -15,7 +14,7 @@ import { toast } from "react-toastify";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "netflix-clone-8d707.firebaseapp.com",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
@@ -26,17 +25,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 setPersistence(auth, browserLocalPersistence);
 const db = getFirestore(app);
-
-// Redirect result handle karo - app load hone pe
-getRedirectResult(auth)
-  .then((result) => {
-    if (result?.user) {
-      toast.success("Welcome! Logged in with Google 🎉");
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-  });
 
 const signup = async (name, email, password) => {
   try {
@@ -69,10 +57,15 @@ const googleLogin = async () => {
   try {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: "select_account" });
-    await signInWithRedirect(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    if (result?.user) {
+      toast.success("Welcome! Logged in with Google 🎉");
+    }
   } catch (error) {
     console.error(error);
-    toast.error("Google login failed. Try again.");
+    if (error.code !== "auth/popup-closed-by-user") {
+      toast.error("Google login failed. Try again.");
+    }
   }
 };
 

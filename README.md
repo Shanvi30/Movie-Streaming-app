@@ -9,7 +9,6 @@ A full-featured Movie streaming web application built with **React.js** and **Fi
 ### 🔐 Authentication
 
 - Email & Password Sign Up / Sign In
-- **Google Sign-In** (One click login)
 - Persistent login session (stays logged in after refresh)
 - Secure logout
 
@@ -128,42 +127,6 @@ A full-featured Movie streaming web application built with **React.js** and **Fi
 
 ---
 
-## 📁 Project Structure
-
-```
-netflix-clone/
-├── public/
-│   └── background_banner.jpg
-├── src/
-│   ├── assets/          # Images, icons
-│   ├── components/
-│   │   ├── Navbar/      # Navigation bar
-│   │   ├── Footer/      # Footer
-│   │   ├── TitleCards/  # Movie carousel cards
-│   │   ├── FAQ/         # FAQ section
-│   │   ├── LoginF/      # Login footer
-│   │   └── ReasonsToJoin/ # Features section
-│   ├── pages/
-│   │   ├── Home/        # Home page
-│   │   ├── Login/       # Login & Signup
-│   │   ├── Movies/      # Movies browse page
-│   │   ├── TVShows/     # TV Shows page
-│   │   ├── NewPopular/  # New & Popular page
-│   │   ├── MovieDetail/ # Movie detail page
-│   │   ├── Watchlist/   # My List page
-│   │   ├── Player/      # Video player page
-│   │   ├── Settings/    # User settings
-│   │   └── NotFound/    # 404 page
-│   ├── firebase.js      # Firebase config & functions
-│   ├── App.jsx          # Main app with routing
-│   ├── main.jsx         # Entry point
-│   └── index.css        # Global styles
-├── .env                 # Environment variables
-├── vercel.json          # Vercel deployment config
-├── package.json
-└── vite.config.js
-```
-
 ---
 
 ## ⚙️ Setup & Installation
@@ -171,8 +134,7 @@ netflix-clone/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/netflix-clone.git
-cd netflix-clone
+git clone https://github.com/Shanvi30/Movie-Streaming-app.git
 ```
 
 ### 2. Install Dependencies
@@ -203,25 +165,6 @@ npm run dev
 
 ```
 http://localhost:5173
-```
-
----
-
----
-
-## 🌐 Deployment (Vercel)
-
-### vercel.json (required for React Router)
-
-```json
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
 ```
 
 ---
