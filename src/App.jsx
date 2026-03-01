@@ -42,9 +42,10 @@ const App = () => {
       } finally {
         setAuthReady(true);
         unsubscribe = onAuthStateChanged(auth, (user) => {
-          if (user) {
+          const isLoginPage = window.location.pathname === "/login";
+          if (user && isLoginPage) {
             navigate("/");
-          } else {
+          } else if (!user && !isLoginPage) {
             navigate("/login");
           }
         });
