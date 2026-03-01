@@ -104,6 +104,7 @@ const Login = () => {
         </div>
       </div>
       <ReasonsToJoin />
+      <FAQ />
       <LoginF />
     </div>
   );
