@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.png";
-import { login, signup } from "../../firebase";
+import { login, signup, googleLogin } from "../../firebase";
 import netflix_spinner from "../../assets/netflix_spinner.gif";
 import ReasonsToJoin from "../../components/ReasonsToJoin/ReasonsToJoin";
 import FAQ from "../../components/FAQ/FAQ";
@@ -22,6 +22,12 @@ const Login = () => {
     } else {
       await signup(name, email, password);
     }
+    setLoading(false);
+  };
+
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+    await googleLogin();
     setLoading(false);
   };
 
@@ -57,6 +63,22 @@ const Login = () => {
           />
           <button onClick={user_auth} type="submit">
             {signState}
+          </button>
+
+          <div className="divider">
+            <span>or</span>
+          </div>
+
+          <button
+            type="button"
+            className="google-btn"
+            onClick={handleGoogleLogin}
+          >
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google"
+            />
+            Continue with Google
           </button>
 
           <div className="form-help">
