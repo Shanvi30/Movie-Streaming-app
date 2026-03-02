@@ -46,7 +46,7 @@ A full-featured Movie streaming web application built with **React.js** and **Fi
 - **More Like This** similar movies section
 - Add/Remove from Watchlist button
 
-### ❤️ Watchlist (My List)
+### ❤️ Watchlist
 
 - Save movies to watch later
 - Real-time sync with Firebase Firestore
@@ -123,7 +123,7 @@ A full-featured Movie streaming web application built with **React.js** and **Fi
 
 | Tool       | Purpose              |
 | ---------- | -------------------- |
-| **Vercel** | Hosting & deployment |
+| **Netlify** | Hosting & deployment |
 
 ---
 
